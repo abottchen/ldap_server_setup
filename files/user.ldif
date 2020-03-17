@@ -1,0 +1,66 @@
+# ldap, People, puppetdebug.vlan
+dn: uid=ldap,ou=People,dc=puppetdebug,dc=vlan
+uid: ldap
+cn: OpenLDAP server
+givenName: OpenLDAP
+sn: server
+mail: ldap@puppetdebug.vlan
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword:: e2NyeXB0fSEh
+shadowLastChange: 17948
+loginShell: /sbin/nologin
+uidNumber: 55
+gidNumber: 55
+homeDirectory: /var/lib/ldap
+gecos: OpenLDAP server
+
+# ldapuser1, People, puppetdebug.vlan
+dn: uid=ldapuser1,ou=People,dc=puppetdebug,dc=vlan
+uid: ldapuser1
+cn: ldapuser1
+sn: ldapuser1
+mail: ldapuser1@puppetdebug.vlan
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword:: e2NyeXB0fSQ2JHQxVy4ueFphJHFYVC9SUWxBa1FTS2VNRkR3QVQ1VUp2NHhodFV
+ kaUJKUWo0dGMyWEhXck50aEhWR0VpVFQ3cWVjL3pDbHVGMDFwS25TdWR0LmdHa3J3aDBkMFk3engw
+shadowLastChange: 17948
+shadowMin: 0
+shadowMax: 99999
+shadowWarning: 7
+loginShell: /bin/bash
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/ldapuser1
+
+# ldapuser2, People, puppetdebug.vlan
+dn: uid=ldapuser2,ou=People,dc=puppetdebug,dc=vlan
+uid: ldapuser2
+cn: ldapuser2
+sn: ldapuser2
+mail: ldapuser2@puppetdebug.vlan
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword:: e2NyeXB0fSQ2JHpqOGRWU210JDZkZTdpdmRPNERuMFRCb2pWb1F1QXM3RGpDNml
+ vUThXV0NBbE9ZWVpYRC9MMFZKaHQ0RDgwSWt5L0hCVkk1eHJxVi4zc0thVnpMZTJNM3VjbmZuQkIu
+shadowLastChange: 17948
+shadowMin: 0
+shadowMax: 99999
+shadowWarning: 7
+loginShell: /bin/bash
+uidNumber: 1002
+gidNumber: 1002
+homeDirectory: /home/ldapuser2

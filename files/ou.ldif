@@ -1,0 +1,7 @@
+dn: ou=Group,dc=puppetdebug,dc=vlan
+objectClass: organizationalunit
+ou: Group
+
+dn: ou=People,dc=puppetdebug,dc=vlan
+objectClass: organizationalunit
+ou: People
