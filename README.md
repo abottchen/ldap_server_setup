@@ -28,10 +28,12 @@ This does require that the PE Master have the latest version of puppetlabs-apply
 
 Once installed, either PE or CDPE can be set up to use it.  It defaults to a bind dn user of `cn=Service Bind User.dc=puppetdebug,dc=vlan` with a password of `password`.  There are two other users present initially:
 
+```
 User: "ldapuser1@puppetdebug.vlan"
 Password: "ldapuser1"
 User: "ldapuser2@puppetdebug.vlan"
 Password:  "ldapuser2"
+```
 
 Along with a group called `admins`.  All of these can be altered by changing the ldif files prior to installation.  After installation, normal ldapmodify commands will need to be used to make updates to the existing LDAP server.
 
