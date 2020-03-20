@@ -17,22 +17,22 @@ plan ldapserver::createcerts(
   
     file { '/etc/ldapserver/certs/ca.pem':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/ca.pem',
+      source => 'puppet:///modules/ldap_server_setup/ca.pem',
     }
   
     file { '/etc/ldapserver/certs/ldap.key':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/ldap.key',
+      source => 'puppet:///modules/ldap_server_setup/ldap.key',
     }
   
     file { '/etc/ldapserver/certs/ldap.crt':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/ldap.crt',
+      source => 'puppet:///modules/ldap_server_setup/ldap.crt',
     }
   
     file { '/etc/pki/ca-trust/source/anchors/ca.pem':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/ca.pem',
+      source => 'puppet:///modules/ldap_server_setup/ca.pem',
     } ~>
 
     exec { 'update trust':
