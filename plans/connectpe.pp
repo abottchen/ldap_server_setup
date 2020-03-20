@@ -6,25 +6,25 @@ plan ldapserver::connectpe(
   apply($targets) {
     file { '/tmp/ds.json':
       ensure   => file,
-      source   => 'puppet:///modules/ldapserver/ds.json',
+      source   => 'puppet:///modules/ldap_server_setup/ds.json',
       notify   => Exec['import ou'],
     }
 
     file { '/etc/ldapserver/user.ldif':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/user.ldif',
+      source => 'puppet:///modules/ldap_server_setup/user.ldif',
       notify => Exec['import user'],
     }
 
     file { '/etc/ldapserver/groups.ldif':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/groups.ldif',
+      source => 'puppet:///modules/ldap_server_setup/groups.ldif',
       notify => Exec['import groups'],
     }
 
     file { '/var/lib/docker/volumes/ldap_data/_data/indexmod.ldif':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/indexmod.ldif',
+      source => 'puppet:///modules/ldap_server_setup/indexmod.ldif',
       notify => Exec['import indexmod'],
     }
 
