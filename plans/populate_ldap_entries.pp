@@ -10,22 +10,22 @@ plan ldapserver::populate_ldap_entries(
 
     file { '/etc/ldapserver/ou.ldif':
       ensure   => file,
-      source   => 'puppet:///modules/ldapserver/ou.ldif',
+      source   => 'puppet:///modules/ldap_server_setup/ou.ldif',
     }
 
     file { '/etc/ldapserver/user.ldif':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/user.ldif',
+      source => 'puppet:///modules/ldap_server_setup/user.ldif',
     }
 
     file { '/etc/ldapserver/groups.ldif':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/groups.ldif',
+      source => 'puppet:///modules/ldap_server_setup/groups.ldif',
     }
 
     file { '/var/lib/docker/volumes/ldap_data/_data/indexmod.ldif':
       ensure => file,
-      source => 'puppet:///modules/ldapserver/indexmod.ldif',
+      source => 'puppet:///modules/ldap_server_setup/indexmod.ldif',
     }
 
     exec { 'import ou':
