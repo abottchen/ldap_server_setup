@@ -4,7 +4,7 @@ Yes, I know it is a terrible idea to ship certificates along with the package.  
 
 Usage:
 
-bolt plan run ldapserver::setup targets=<target machine>
+bolt plan run ldap_server_setup::setup -m modules:.. -t <TARGET>
   
 
 Steps:
