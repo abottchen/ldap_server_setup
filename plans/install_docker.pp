@@ -1,4 +1,4 @@
-plan ldapserver::install_docker(
+plan ldap_server_setup::install_docker(
   TargetSpec $targets,
 ) {
   $targets.apply_prep
@@ -32,7 +32,7 @@ plan ldapserver::install_docker(
   }
 
   $result = run_task(
-    'ldapserver::waitfordocker',
+    'ldap_server_setup::waitfordocker',
     $targets,
   )
 
