@@ -7,24 +7,36 @@ Usage:
 bolt plan run ldapserver::setup targets=<target machine>
   
 
-This does require bolt, so install it first.  I used a bolt.yaml file of:
+Steps:
+
+1. This does require bolt, so install it first.  I used a bolt.yaml file of:
 
 ```
 # cat ~/.puppetlabs/bolt/bolt.yaml
-modulepath: /etc/puppetlabs/code/environments/production/modules:/root/.puppetlabs/bolt/modules:/root/.puppetlabs/bolt/site-modules:/root/.puppetlabs/bolt/site
 ssh:
   user: root
-  private-key: ~/.ssh/id_rsa
+  private-key: ~/.ssh/id_rsa-acceptance
   host-key-check: false
 ```
 
 Of course, this will differ based on setup.
 
-Since the target machine needs to be an agent of the master with the bolt plan, you might as well use PCP rather than ssh to install:
+2. Switch into the ldap_server_setup directory
+3. Create a directory for forge modules: 
 
-`bolt plan run ldapserver::setup targets=pcp://<target machine>`
+```# mkdir modules```
 
-This does require that the PE Master have the latest version of puppetlabs-apply_helpers set up, following the instructions there.
+4. Install modules locally:
+
+```
+# bolt puppetfile install -m modules --puppetfile ./Puppetfile
+```
+
+5. Use the setup plan to install an LDAP server on a target node:
+
+```
+# bolt plan run ldap_server_setup::setup -m modules:.. -t <TARGET>
+```
 
 Once installed, either PE or CDPE can be set up to use it.  It defaults to a bind dn user of `cn=Service Bind User.dc=puppetdebug,dc=vlan` with a password of `password`.  There are two other users present initially:
 

@@ -1,4 +1,4 @@
-plan ldapserver::connectpe(
+plan ldap_server_setup::connectpe(
   TargetSpec $targets,
 ) {
   $targets.apply_prep

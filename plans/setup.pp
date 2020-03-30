@@ -1,10 +1,10 @@
-plan ldapserver::setup (
+plan ldap_server_setup::setup (
   TargetSpec $targets) {
 
- run_plan('ldapserver::createcerts', $targets) 
- run_plan('ldapserver::install_docker', $targets) 
- run_plan('ldapserver::populate_ldap_entries', $targets) 
- $response = run_task('ldapserver::test', $targets)
+ run_plan('ldap_server_setup::createcerts', $targets) 
+ run_plan('ldap_server_setup::install_docker', $targets) 
+ run_plan('ldap_server_setup::populate_ldap_entries', $targets) 
+ $response = run_task('ldap_server_setup::test', $targets)
 
  return $response
 }
