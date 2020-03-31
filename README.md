@@ -83,3 +83,5 @@ To setup PE, use the `ds` endpoint to inject the following:
     "user_rdn": ""
 }
 ```
+
+Change the "hostname" to match the target where the bolt plan installed the ldap server.
