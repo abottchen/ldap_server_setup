@@ -1,0 +1,10 @@
+{
+  "description": "Connects a target PE instance to the specified LDAPS server",
+  "input_method": "stdin",
+  "parameters": {
+    "ldap_server_hostname": {
+      "description": "Hostname of server running LDAPS",
+      "type": "String[1]"
+    }
+  }
+}
