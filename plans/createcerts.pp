@@ -14,11 +14,31 @@ plan ldap_server_setup::createcerts(
     file { $directories:
       ensure => directory,
     }
+
+    file {'/etc/ldapserver/certs/ca.pem':
+      ensure => file,
+      source => 'puppet:///modules/ldap_server_setup/ca.pem',
+    }
+
+    file {'/etc/ldapserver/certs/ldap.key':
+      ensure => file,
+      source => 'puppet:///modules/ldap_server_setup/ldap.key',
+    }
+
+    file {'/etc/ldapserver/certs/ldap.crt':
+      ensure => file,
+      source => 'puppet:///modules/ldap_server_setup/ldap.key',
+    }
+
+    file {'/etc/pki/ca-trust/source/anchors/ca.pem':
+      ensure => file,
+      source => 'puppet:///modules/ldap_server_setup/ca.pem',
+    } ~>
+
+    exec { 'update trust':
+      refreshonly => true,
+      path        => '/usr/bin',
+      command     => 'update-ca-trust extract',
+    }
   }
-  
-  upload_file('ldap_server_setup/ca.pem', '/etc/ldapserver/certs/ca.pem', $targets, '_run_as' => 'root')
-  upload_file('ldap_server_setup/ldap.key', '/etc/ldapserver/certs/ldap.key', $targets, '_run_as' => 'root')
-  upload_file('ldap_server_setup/ldap.crt', '/etc/ldapserver/certs/ldap.crt', $targets, '_run_as' => 'root')
-  upload_file('ldap_server_setup/ca.pem', '/etc/pki/ca-trust/source/anchors/ca.pem', $targets, '_run_as' => 'root')
-  run_command('/usr/bin/update-ca-trust extract', $targets, '_catch_errors' => true)
 }
