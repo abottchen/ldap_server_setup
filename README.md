@@ -85,3 +85,13 @@ To setup PE, use the `ds` endpoint to inject the following:
 ```
 
 Change the "hostname" to match the target where the bolt plan installed the ldap server.
+
+It also includes a couple tasks for connecting PE and CDPE to an LDAP server created:
+
+```
+# bolt task run ldap_server_setup::connectcdpe -m modules:.. -t pe-201922-agent-cdpe.puppetdebug.vlan ldap_host=skilful-locust.delivery.puppetlabs.net root_user="adam@puppet.com" root_password=test
+```
+
+```
+# bolt task run ldap_server_setup::connectpe -m modules:.. -t pe-201922-master.puppetdebug.vlan ldap_server_hostname=skilful-locust.delivery.puppetlabs.net
+```
