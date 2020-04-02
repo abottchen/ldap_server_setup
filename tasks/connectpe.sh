@@ -1,10 +1,5 @@
 #!/bin/sh
 
-if [ -z "$PT_ldap_server_hostname" ]; then
-  echo "ldap_server_hostname not set!"
-  exit 1
-fi
-
 (cat <<EOF
 {
     "base_dn": "dc=puppetdebug,dc=vlan",

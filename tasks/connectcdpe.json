@@ -1,0 +1,18 @@
+{
+  "description": "Connect target CD4PE instance to given LDAP server",
+  "input_method": "environment",
+  "parameters": {
+    "root_user": {
+      "description": "CD4PE root user email",
+      "type": "String[1]"
+    },
+    "root_password": {
+      "description": "Password for the given CD4PE root user",
+      "type": "String[1]"
+    },
+    "ldap_host": {
+      "description": "The IP or hostname of LDAP server",
+      "type": "String[1]"
+    }
+  }
+}
