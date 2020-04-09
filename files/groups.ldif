@@ -4,5 +4,5 @@ objectClass: top
 cn: admins
 userPassword: {crypt}x
 gidNumber: 1003
-memberUid: ldapuser1
-memberUid: ldapuser2
+memberUid: uid=ldapuser1,ou=People,dc=puppetdebug,dc=vlan
+memberUid: uid=ldapuser2,ou=People,dc=puppetdebug,dc=vlan
