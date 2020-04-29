@@ -4,7 +4,7 @@ Yes, I know it is a terrible idea to ship certificates along with the package.  
 
 Usage:
 
-bolt plan run ldap_server_setup::setup -m modules:.. -t TARGETS
+/opt/puppetlabs/bin/bolt plan run ldap_server_setup::setup -m modules:.. -t TARGETS
   
 
 Steps:
@@ -29,13 +29,13 @@ Of course, this will differ based on setup.
 4. Install modules locally:
 
 ```
-# bolt puppetfile install -m modules --puppetfile ./Puppetfile
+# /opt/puppetlabs/bin/bolt puppetfile install -m modules --puppetfile ./Puppetfile
 ```
 
 5. Use the setup plan to install an LDAP server on a target node:
 
 ```
-# bolt plan run ldap_server_setup::setup -m modules:.. -t <TARGET>
+# /opt/puppetlabs/bin/bolt plan run ldap_server_setup::setup -m modules:.. -t <TARGET>
 ```
 
 Once installed, either PE or CDPE can be set up to use it.  It defaults to a bind dn user of `cn=Service Bind User.dc=puppetdebug,dc=vlan` with a password of `password`.  There are two other users present initially:
@@ -49,11 +49,22 @@ Password:  "ldapuser2"
 
 Along with a group called `admins`.  All of these can be altered by changing the ldif files prior to installation.  After installation, normal ldapmodify commands will need to be used to make updates to the existing LDAP server.
 
-To setup CDPE to use this LDAP server, add settings as per the following:
+
+There are also a couple tasks for connecting PE and CDPE to the created LDAP server:
+
+```
+# /opt/puppetlabs/bin/bolt task run ldap_server_setup::connectcdpe -m modules:.. -t <target CDPE host> ldap_host=<LDAP server> root_user="<CDPE root user> root_password=<CDPE password>
+```
+
+```
+# /opt/puppetlabs/bin/bolt task run ldap_server_setup::connectpe -m modules:.. -t <target PE master> ldap_server_hostname=<LDAP server>
+```
+
+To setup CDPE manually to use this LDAP server, add settings as per the following:
 
 ![CDPE Settings](/cdpe-settings.png)
 
-To setup PE, use the `ds` endpoint to inject the following:
+To setup PE manually, use the `ds` endpoint to inject the following:
 
 ```
 {
@@ -86,12 +97,3 @@ To setup PE, use the `ds` endpoint to inject the following:
 
 Change the "hostname" to match the target where the bolt plan installed the ldap server.
 
-It also includes a couple tasks for connecting PE and CDPE to an LDAP server created:
-
-```
-# bolt task run ldap_server_setup::connectcdpe -m modules:.. -t pe-201922-agent-cdpe.puppetdebug.vlan ldap_host=skilful-locust.delivery.puppetlabs.net root_user="adam@puppet.com" root_password=test
-```
-
-```
-# bolt task run ldap_server_setup::connectpe -m modules:.. -t pe-201922-master.puppetdebug.vlan ldap_server_hostname=skilful-locust.delivery.puppetlabs.net
-```
