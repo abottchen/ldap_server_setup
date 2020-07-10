@@ -13,6 +13,7 @@ cat > /tmp/saveldapconfiguration.json <<EOF
       "bindDnPassword": "password",
       "userBaseDn": "ou=People,dc=puppetdebug,dc=vlan",
       "userAttribute": "mail",
+      "mailAttribute": "",
       "userBaseFilter": "",
       "groupBaseDn": "ou=Group,dc=puppetdebug,dc=vlan",
       "groupUserAttribute": "dn",
